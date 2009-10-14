@@ -19,3 +19,7 @@ Newsletter Export Script für Ganbio
 	angemeldet haben (true), oder ob Sie alle Kunden exportieren wollen (false).
 	Speichern Sie die Einstellungen.
 	Der Aufruf des Exportes erfolgt  über http://newsletter_export:PASSWORT@ihr-shop.de/newsletter_export/export.php 	 
+
+	Beachten Sie bitte, dass die zu exportierenden E-Mailadressen als <approved = 1> in unser System übertragen 
+	werden.
+	Sie müssen daher berechtigt sein, an die Empfänger E-Mails zu versenden.
