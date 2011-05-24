@@ -38,6 +38,7 @@ class NewsletterAPI {
 					s.customers_status_name,
 					a.entry_street_address,
 					a.entry_postcode,
+					c.customers_newsletter,
 					a.entry_city
 				FROM
 					customers AS c,
@@ -63,7 +64,12 @@ class NewsletterAPI {
 		echo "<?xml version='1.0' encoding='utf-8' ?>\n";
 		echo "<recipients>\n";
 		while($user = mysql_fetch_assoc($export_query)) {
-			echo "
+			$special_tags = "";
+			if($user['customers_newsletter']==1)
+			{
+				$special_tags = ", newsletter";
+			}
+			echo "			  
 				<recipient>
 					<key>".$this->_encode_field($user['customers_id'])."</key>
 					<email>".$this->_encode_field($user['customers_email_address'])."</email>
@@ -73,7 +79,7 @@ class NewsletterAPI {
 					<city>".$this->_encode_field($user['entry_city'])."</city>
 					<street>".$this->_encode_field($user['entry_street_address'])."</street>
 					<pcode>".$this->_encode_field($user['entry_postcode'])."</pcode>
-					<tag_list>".$this->_encode_field($user['customers_status_name'])."</tag_list>
+					<tag_list>".$this->_encode_field($user['customers_status_name']). $special_tags ."</tag_list>
 					<only_text>0</only_text>
 					<approved>1</approved>
 				</recipient>				

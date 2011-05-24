@@ -1,17 +1,27 @@
-Newsletter Export Script für Ganbio
+Lettr.de Mailversand für Ganbio
 ===================================
-    Digineo GmbH 2009 | www.digineo.de
-    Author: Tim Kretschmer
-    Version 1.0
+    Digineo GmbH 2011 | www.digineo.de
+    Author: Dennis Meise
+    Version 2.0
     Lizenz: GNU 3
 
-1. Installation
+1. Registrierung
+------------
+	Mit diesem Modul haben Sie die Möglichkeit Ihre Kundendaten mit http://www.lettr.de zu syncronisieren und den gesamten Emailverkehr Ihres Shops über lettr.de abzuwickeln.
+	Nicht zustellbare Emails und Mails die im Spam-Ordnder landen gehören dank dem Whitelisting der Certified Senders Alliance der Vergangenheit an - Sie können sicher sein, dass wichtige Emails wie Bestellbestätigungen oder Aktivierunsmails auch tatsächlich bei Ihren Kunden ankommen.
+	Zur Nutzung dieses Services ist ein lettr.de Account notwendig:
+	
+	Registrieren Sie sich hier und Sie erhalten ein Startguthaben von 5000 Credits.
+	https://lettr.de/signup?coupon=gambio
+
+
+2. Installation
 ---------------
 	Führen Sie die Dateien mit Ihrer Gambio Installation zusammen.
 	Die Datei newsletter_export.php muss in den Ordner /admin/includes/modules/export/ kopiert werden.
 	Die Datei export.php muss in den Ordner /newsletter_export/ kopiert werden.
 
-2. Bedienung
+3. Konfiguration
 ------------
 	Installieren sie das Modul über den Modulmanager im Administrationsbereich Ihres Gambio Shop.
 	Legen Sie ein Passwort fest, welches Ihre Kundendaten schützt. 
@@ -19,3 +29,22 @@ Newsletter Export Script für Ganbio
 	angemeldet haben (true), oder ob Sie alle Kunden exportieren wollen (false).
 	Speichern Sie die Einstellungen.
 	Der Aufruf des Exportes erfolgt  über http://newsletter_export:PASSWORT@ihr-shop.de/newsletter_export/export.php 	 
+
+4. Synchronisation mit lettr.de
+------------
+	Um Ihre Kundendaten mit lettr.de zu syncronisieren	müssen Sie unter 
+	https://lettr.de/setting/edit
+
+	Unter *Import URL* und *Callback URL* ihre Export URL eingeben:
+
+	http://newsletter_export:PASSWORT@ihr-shop.de/newsletter_export/export.php 	
+
+	Anschließend müssen Sie unter
+
+	https://lettr.de/imports/new
+
+	den Reiter "Web-Schnittstelle" aktivieren und dort den Import erstellen. Die Kundendaten Ihres Shops werden dadurch innerhalb weniger Minuten in Ihren lettr Account übertragen und Sie können Ihre Kunden bequem per über das lettr Frontend anschreiben.
+
+
+5. Kompletter Mail-Versand über lettr.de
+------------	
