@@ -95,11 +95,11 @@
     protected function send($url,$method,$data=null){
       self::check_credentials();
       $this->errors = null;
-      
+	  
       if(is_array($data)){
         $data = json_encode($data);
       }
-      
+	  
       $header[] = "Accept: " . self::$credentials["content_type"];
       $header[] = "Content-Type: " . self::$credentials["content_type"];
 	  $header[] = "X-Lettr-API-key: " . self::$credentials["api_key"];

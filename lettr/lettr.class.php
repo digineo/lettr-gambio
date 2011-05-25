@@ -72,7 +72,7 @@
      * @param $subject string Betreff der E-Mail
      * @param $message string Text der E-Mail
      */
-    public static function multipart_mail($to, $subject, $multiparts=array()){
+    public static function multipart_mail($to, $subject, $multiparts=array()){    	
       if(empty($multiparts["text"]) || empty($multiparts["html"])) {
         throw new Lettr_IllegalArgumentException("Als multipart muss mindestens 'text' oder 'html' angegeben werden.");
       }

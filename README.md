@@ -17,13 +17,16 @@ Lettr.de Mailversand für Ganbio
 
 2. Installation
 ---------------
-	Führen Sie die Dateien mit Ihrer Gambio Installation zusammen.
+	Fügen Sie die beiliegenden Dateien in Ihre Shop Installation ein.
 	Die Datei newsletter_export.php muss in den Ordner /admin/includes/modules/export/ kopiert werden.
 	Die Datei export.php muss in den Ordner /newsletter_export/ kopiert werden.
+	In der Datei lang/german/admin/configuration.php muss der Inhalt aus der entsprechenden Datei aus diesem Archiv hinzugefügt werden.
+	Das Verzeichnis lettr/ müssen Sie einfach in das Installationsverzeichnis Ihres Shops kopieren.
+	Als letzten Schritt müssen Sie noch die inc/xtc_php_mail.inc.php durch die Datei aus diesem Archiv ersetzen.
 
 3. Konfiguration
 ------------
-	Installieren sie das Modul über den Modulmanager im Administrationsbereich Ihres Gambio Shop.
+	Installieren sie das Modul über den Modulmanager (XT-Module) im Administrationsbereich Ihres Gambio Shop.
 	Legen Sie ein Passwort fest, welches Ihre Kundendaten schützt. 
 	Entscheiden Sie sich, ob Sie nur die Kunden exportieren wollen, die sich für den Newsletter 
 	angemeldet haben (true), oder ob Sie alle Kunden exportieren wollen (false).
@@ -48,3 +51,5 @@ Lettr.de Mailversand für Ganbio
 
 5. Kompletter Mail-Versand über lettr.de
 ------------	
+	Um den kompletten Mailversand Ihres Shops über das Whitelisting von lettr abzuwickeln müssen Sie lediglich in den Emaileinstellungen Ihren Lettr-API-Key (zu finden unter https://lettr.de/setting) eintragen und die entsprechende Option aktivieren.
+	Sie haben dadurch den Vorteil, dass alle Ihre wichtigen Emails über die Schnittstelle von lettr versendet werden und können dadurch sicherstellen, dass diese Emails nicht im Spam-Ordner des Empfängers landen.

@@ -25,10 +25,10 @@
      * @param array $attributes
      */
     public function deliver_without_template($attributes){
+   	  
       Lettr_Validation::presence_of('attributes', $attributes, array("recipient", "subject", "text"));
       
-      $identifier = md5($attributes["subject"]);
-      
+      $identifier = md5($attributes["subject"]);      
       return $this->customId('post', $identifier, "deliver_by_identifier", array("delivery"=>$attributes));
     }
     
