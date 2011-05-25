@@ -12,7 +12,7 @@ require('../admin/includes/configure.php');
 mysql_connect (DB_SERVER, DB_SERVER_USERNAME, DB_SERVER_PASSWORD);
 mysql_select_db(DB_DATABASE);
 
-$sql = "SELECT configuration_value AS password FROM configuration WHERE configuration_key = 'MODULE_DIGILETTER_PASSWORD'";
+$sql = "SELECT configuration_value AS password FROM configuration WHERE configuration_key = 'MODULE_LETTR_PASSWORD'";
 $password= mysql_fetch_array(mysql_query($sql));
 $password = $password['password'];
 
@@ -25,7 +25,7 @@ if($_SERVER['PHP_AUTH_PW'] != $password || $password == "" || $_SERVER['PHP_AUTH
 class NewsletterAPI {
 
 	function export(){
-		$sql = "SELECT configuration_value AS no_spam FROM configuration WHERE configuration_key = 'MODULE_DIGILETTER_NO_SPAM'";
+		$sql = "SELECT configuration_value AS no_spam FROM configuration WHERE configuration_key = 'MODULE_LETTR_NO_SPAM'";
 		$no_spam= mysql_fetch_array(mysql_query($sql));
 		$no_spam = ($no_spam['no_spam'] == 'True') ? true : false;
 
