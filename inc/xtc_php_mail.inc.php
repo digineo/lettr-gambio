@@ -103,13 +103,21 @@ function xtc_php_mail($from_email_address, $from_email_name, $to_email_address, 
 
 	$mail->Subject = $email_subject;
 	$use_original_mail_function = true;
-	if(MODULE_LETTR_API and MODULE_LETTR_SEND_MAIL == "True")
+	$use_lettr = true;
+	
+	// dont use lettr for attachments
+	if(count($mail->attachment)> 0)
+	{
+		$use_lettr = false;
+	}
+	
+	if($use_lettr and MODULE_DIGILETTER_API and MODULE_DIGILETTER_SEND_MAIL == "True")
 	{
 	  $use_original_mail_function = false;
 	  // mail versand über lettr.de
 	  include(DIR_FS_CATALOG."lettr/lettr_init.php");
 	  	  
-	  Lettr::set_credentials(MODULE_LETTR_API);
+	  Lettr::set_credentials(MODULE_DIGILETTER_API);
 	  
 	  $email_subject = html_entity_decode($email_subject);
 	  
