@@ -105,35 +105,37 @@ function xtc_php_mail($from_email_address, $from_email_name, $to_email_address, 
 	$use_original_mail_function = true;
 	$use_lettr = true;
 	
-	// dont use lettr for attachments
-	if(count($mail->attachment)> 0)
-	{
-		$use_lettr = false;
-	}
-	
 	if($use_lettr and MODULE_DIGILETTER_API and MODULE_DIGILETTER_SEND_MAIL == "True")
 	{
 	  $use_original_mail_function = false;
-	  // mail versand über lettr.de
+	  // mail versand ï¿½ber lettr.de
 	  include(DIR_FS_CATALOG."lettr/lettr_init.php");
 	  	  
 	  Lettr::set_credentials(MODULE_DIGILETTER_API);
 	  
 	  $email_subject = html_entity_decode($email_subject);
 	  
-	  try{	  
+	  try{
 	  if (EMAIL_USE_HTML == 'true')
-	  {
-	  	Lettr::multipart_mail($to_email_address, utf8_encode($email_subject), array("text"=> utf8_encode($message_body_plain), "html"=> utf8_encode($message_body_html)));
+    {
+      if(count($mail->attachment)> 0){
+        $attach = pathinfo($path_to_attachement);
+        Lettr::multipart_mail($to_email_address, utf8_encode($email_subject), array("delivery[reply_to]" => $from_email_address, "delivery[text]"=> utf8_encode($message_body_plain), "delivery[html]"=> utf8_encode($message_body_html), "files[" . $attach['basename'] . "]" => "@" . $path_to_attachement));
+      } else {
+        Lettr::multipart_mail($to_email_address, utf8_encode($email_subject), array("delivery[reply_to]" => $from_email_address, "delivery[text]"=> utf8_encode($message_body_plain), "delivery[html]"=> utf8_encode($message_body_html))); 
+      }
+      return true;
 	  }
 	else
 	  {
-		Lettr::mail($to_email_address, utf8_encode($email_subject), utf8_encode($message_body_plain));
+      Lettr::mail($to_email_address, utf8_encode($email_subject), utf8_encode($message_body_plain));
+      return true;
 	  }
 	  
 	  }catch(Exception $e)
 	  {
-	  	$use_original_mail_function=true;
+	    error_log('mail err: ' . $e);
+	  	//$use_original_mail_function=true;
 	  }
 	}	
 
