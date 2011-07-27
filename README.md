@@ -3,7 +3,7 @@ Lettr.de Mailversand für Gambio
     Digineo GmbH 2011 | www.digineo.de
     Author: Dennis Meise
     Version 2.0
-    Lizenz: GNU 3
+    Lizenz: LGPL
 
 1. Registrierung
 ------------
