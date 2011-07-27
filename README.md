@@ -1,4 +1,4 @@
-Lettr.de Mailversand für Ganbio
+Lettr.de Mailversand für Gambio
 ===================================
     Digineo GmbH 2011 | www.digineo.de
     Author: Dennis Meise
